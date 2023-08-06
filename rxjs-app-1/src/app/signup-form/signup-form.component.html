@@ -1,0 +1,35 @@
+<form [formGroup]="cardForm" class="SignUpForm">
+    <app-input [control]="cardForm.controls.firmName" label="Business Name"></app-input>
+    <app-input [control]="cardForm.controls.userFirstName" label="First Name"></app-input>
+    <app-input [control]="cardForm.controls.userLastName" label="Last Name"></app-input>
+    <app-input [control]="cardForm.controls.userEmail" label="Email"></app-input>
+
+
+
+    <!-- $any() i <3 TypeScript. cannot normally get the embedded type of Control inside of Group -->
+    <app-input [control]="$any(cardForm.controls.passwordForm.get('userPasswordInit'))" label="Password"></app-input>
+    <app-input [control]="$any(cardForm.controls.passwordForm.get('userPasswordConfirm'))"
+        label="Confirm Password"></app-input>
+
+
+
+    <p class="text-xs w-80 pl-4 mb-3 text-justify">By clicking Sign Up, you agree to our Terms. Learn how we
+        collect,
+        use
+        and
+        share your data in our <a href="" class="underline">Privacy Policy</a> and how we use cookies and similar
+        technology in our <a href="" class="underline">Cookies Policy</a>.</p>
+    <button [disabled]="cardForm.invalid" type="submit" class="FormBtn self-center"
+        [ngClass]="cardForm.invalid ? 'FormBtn-gray' : 'FormBtn-green'">Sign Up</button>
+</form>
+<!-- <div>Form Contents: {{cardForm.value | json }}</div>
+<div>Form is valid: {{cardForm.valid }}</div>
+<div>Errors around firm name: {{cardForm.controls.firmName.errors | json }}</div>
+<div>Errors around user first name: {{cardForm.controls.userFirstName.errors | json }}</div>
+<div>Errors around user last name: {{cardForm.controls.userLastName.errors | json }}</div>
+<div>Errors around user email: {{cardForm.controls.userEmail.errors | json }}</div>
+<div>Errors around user first password: {{cardForm.controls.userPasswordInit.errors | json }}</div>
+<div>Errors around user confirmation password: {{cardForm.controls.userPasswordConfirm.errors | json }}</div>
+
+<div>Errors: {{cardForm.controls.firmName.errors | json }}</div>
+<div>Form Valid: {{!cardForm.invalid }}</div> -->

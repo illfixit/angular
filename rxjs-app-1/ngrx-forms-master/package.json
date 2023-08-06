@@ -1,0 +1,85 @@
+{
+  "$schema": "./node_modules/ng-packagr/package.schema.json",
+  "name": "ngrx-forms",
+  "version": "8.0.0",
+  "description": "Proper integration of forms in Angular 4 applications using ngrx",
+  "module": "ngrx/forms.es5.js",
+  "es2015": "ngrx/forms.js",
+  "main": "bundles/forms.umd.js",
+  "scripts": {
+    "build": "ng-packagr -p package.json -c tsconfig.json && rimraf ./dist/example-app ./dist/types",
+    "test": "karma start",
+    "test-no-progress": "karma start --reporters spec,karma-typescript",
+    "test-watch": "karma start --single-run=false",
+    "test-watch-headless": "karma start --single-run=false --browsers ChromeHeadless",
+    "lint": "tslint --project .",
+    "tsd": "tsd",
+    "pack-lib": "npm pack ./dist",
+    "publish-lib": "npm publish ./dist",
+    "publish-lib:next": "npm publish ./dist --tag next",
+    "report-coverage": "codecov ./coverage/lcov/lcov.info",
+    "example-install": "npm run build && npm pack ./dist && cd example-app && cross-var npm install ../ngrx-forms-$npm_package_version.tgz && cd .."
+  },
+  "types": "./ngrx-forms.d.ts",
+  "ngPackage": {
+    "lib": {
+      "entryFile": "public_api.ts"
+    }
+  },
+  "author": "Jonathan Ziller <jonathan.ziller@gmail.com> (https://github.com/MrWolfZ)",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/MrWolfZ/ngrx-forms.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MrWolfZ/ngrx-forms/issues"
+  },
+  "homepage": "https://github.com/MrWolfZ/ngrx-forms",
+  "keywords": [
+    "angular",
+    "javascript",
+    "typescript",
+    "ngrx",
+    "redux"
+  ],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/core": ">=12.0.0",
+    "@angular/common": ">=12.0.0",
+    "@angular/forms": ">=12.0.0",
+    "@ngrx/store": ">=12.0.0",
+    "typescript": ">=4.2.3"
+  },
+  "devDependencies": {
+    "@angular/common": "12.2.13",
+    "@angular/compiler": "12.2.13",
+    "@angular/compiler-cli": "12.2.13",
+    "@angular/core": "12.2.13",
+    "@angular/forms": "12.2.13",
+    "@angular/platform-browser": "12.2.13",
+    "@angular/platform-browser-dynamic": "12.2.13",
+    "@ngrx/store": "12.5.1",
+    "@types/jasmine": "3.10.2",
+    "@types/node": "14.14.14",
+    "codecov": "3.8.3",
+    "codelyzer": "6.0.2",
+    "core-js": "3.19.1",
+    "cross-var": "1.1.0",
+    "jasmine-core": "3.10.1",
+    "karma": "6.3.9",
+    "karma-chrome-launcher": "3.1.0",
+    "karma-jasmine": "3.3.1",
+    "karma-spec-reporter": "0.0.32",
+    "karma-typescript": "5.5.2",
+    "karma-typescript-es6-transform": "5.5.2",
+    "ng-packagr": "12.2.5",
+    "reflect-metadata": "0.1.13",
+    "rimraf": "3.0.2",
+    "rxjs": "6.6.3",
+    "tsd": "0.18.0",
+    "tslib": "2.3.1",
+    "tslint": "5.20.1",
+    "typescript": "4.2.3",
+    "zone.js": "0.11.4"
+  }
+}

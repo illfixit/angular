@@ -1,0 +1,35 @@
+<div class="field m-3">
+    <label class="label ml-2 mr-2">{{label}}:</label>
+
+    <ng-container [ngSwitch]="label">
+
+        <input *ngSwitchCase="'Email'" type="email" [formControl]="control" type="" class="FormInputBasic"
+            [ngClass]="[containsErrors() ? 'FormInputError' : 'FormInputBasic',  nullErrors() ? 'FormInputValid': '']" />
+
+        <input *ngSwitchCase="'Password'" type="password" [formControl]="control" class="FormInputBasic"
+            [ngClass]="[containsErrors() ? 'FormInputError' : 'FormInputBasic',  nullErrors() ? 'FormInputValid': '']" />
+
+        <input *ngSwitchCase="'Confirm Password'" type="password" [formControl]="control" class="FormInputBasic"
+            [ngClass]="[containsErrors() ? 'FormInputError' : 'FormInputBasic',  nullErrors() ? 'FormInputValid': '']" />
+
+        <input *ngSwitchDefault [formControl]="control" type="" class="FormInputBasic"
+            [ngClass]="[containsErrors() ? 'FormInputError' : 'FormInputBasic',  nullErrors() ? 'FormInputValid': '']">
+
+    </ng-container>
+
+
+    <ng-container *ngIf="containsErrors()">
+        <div *ngIf="control.errors?.required" class="text-red-600">
+            {{label}} is a required field
+        </div>
+        <div *ngIf="control.errors?.minlength" class="text-red-600">
+            {{label}} must contain {{control.errors?.minlength.requiredLength}} or more letters
+        </div>
+        <div *ngIf="control.errors?.pattern" class="text-red-600">
+            Please write correct email address.
+        </div>
+        <div *ngIf="control.errors?.passwordsNotSame" class="text-red-600">
+            Passwords don't match
+        </div>
+    </ng-container>
+</div>
